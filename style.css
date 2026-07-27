@@ -1,0 +1,241 @@
+/* ===============================
+   GOOGLE FONT
+==================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+/* ==========================
+ENVELOPE
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg,#07000f,#170022,#2d003e);
+}
+
+/* ===============================
+BACKGROUND
+==================================*/
+
+#stars,
+#hearts,
+#petals {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* ===============================
+MAIN CARD
+==================================*/
+
+.container {
+    position: relative;
+    width: 850px;
+    max-width: 90%;
+    padding: 60px;
+    text-align: center;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow: 0 0 50px rgba(255,0,120,.25);
+    animation: popup 1.2s;
+    z-index: 10;
+    overflow: auto;
+    max-height: 90%;
+    scrollbar-width: none;
+}
+
+/* ===============================
+POPUP
+==================================*/
+
+@keyframes popup {
+
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===============================
+TITLE
+==================================*/
+
+h3 {
+    font-size: 26px;
+    color: #ff78b2;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: glow 2s infinite alternate;
+}
+
+h1 {
+    font-size: 55px;
+    color: white;
+    margin-bottom: 35px;
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow: 0 0 10px hotpink;
+    }
+
+    to {
+        text-shadow: 0 0 30px deeppink, 0 0 50px hotpink;
+    }
+}
+
+/* ===============================
+TEXT
+==================================*/
+
+#typing {
+    font-size: 22px;
+    line-height: 42px;
+    color: #f5f5f5;
+    min-height: 180px;
+}
+
+/* ===============================
+BUTTON
+==================================*/
+
+button {
+    margin-top: 45px;
+    padding: 18px 45px;
+    font-size: 22px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient( 45deg, #ff006a, #ff6aa2);
+    color: white;
+    transition: .4s;
+    box-shadow: 0 0 30px hotpink;
+}
+
+    button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 60px deeppink;
+    }
+
+/* ===============================
+FLOAT HEART
+==================================*/
+
+.heart {
+    position: absolute;
+    color: #ff4d88;
+    animation: heartFloat 10s linear;
+}
+
+@keyframes heartFloat {
+
+    0% {
+        transform: translateY(100vh) scale(.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-120px) scale(1.7);
+        opacity: 0;
+    }
+}
+
+/* ===============================
+PETAL
+==================================*/
+
+.petal {
+    position: absolute;
+    width: 16px;
+    height: 22px;
+    background: #ff4d6d;
+    border-radius: 60% 40% 60% 40%;
+    animation: petalFall 12s linear;
+}
+
+@keyframes petalFall {
+
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(120vh) rotate(720deg);
+    }
+}
+
+/* ===============================
+STAR
+==================================*/
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 100%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .2;
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(2);
+    }
+}
+
+/* ===============================
+MOBILE
+==================================*/
+
+@media(max-width:768px) {
+
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    #typing {
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 15px 30px;
+    }
+}
