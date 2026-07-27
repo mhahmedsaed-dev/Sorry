@@ -1,155 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Last Chance ❤️</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-overflow:hidden;
-height:100vh;
-font-family:Arial,sans-serif;
-background:radial-gradient(circle at top,#2d003d,#000);
-display:flex;justify-content:center;align-items:center;color:#fff}
-#bg,#fx{position:fixed;inset:0}
-.card{
-position:relative;z-index:2;width:min(900px,92%);
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-border-radius:24px;padding:40px;text-align:center;
-box-shadow:0 0 40px rgba(255,0,128,.35)}
-h1{font-size:56px;color:#ff8ec7;animation:glow 2s infinite alternate}
-@keyframes glow{from{text-shadow:0 0 10px hotpink}to{text-shadow:0 0 35px deeppink}}
-#typing{min-height:170px;font-size:22px;line-height:1.7;margin:30px 0}
-button{
-padding:16px 35px;border:0;border-radius:40px;
-background:linear-gradient(45deg,#ff006e,#ff7eb3);
-color:#fff;font-size:20px;cursor:pointer;
-transition:.3s}
-button:hover{transform:scale(1.08)}
-#final{display:none;margin-top:25px;font-size:24px;animation:fade 1.2s}
-@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.star,.heart,.petal{
-position:absolute;pointer-events:none}
-.star{width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 2s infinite alternate}
-@keyframes twinkle{to{opacity:.2;transform:scale(2)}}
-.heart{color:#ff4d88;animation:rise 10s linear forwards}
-@keyframes rise{from{transform:translateY(110vh) scale(.5);opacity:0}20%{opacity:1}to{transform:translateY(-10vh) scale(1.6);opacity:0}}
-.petal{width:14px;height:20px;background:#ff5a7f;border-radius:60% 40% 60% 40%;animation:fall 10s linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
-.trail{position:fixed;font-size:18px;pointer-events:none;animation:t .8s forwards}
-@keyframes t{to{transform:translateY(-25px) scale(1.6);opacity:0}}
-</style>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dear Hibi ❤️</title>
+
+    <link rel="stylesheet"
+        href="style.css">
+
 </head>
+
 <body>
-<canvas id="fx"></canvas>
-<div id="bg"></div>
-<div class="card">
-<h1>Dear Hibi ❤️</h1>
-<div id="typing"></div>
-<button onclick="openHeart()">Open My Heart ❤️</button>
-<div id="final">
-<h2>🌹 Please Give Me One Last Chance 🌹</h2>
-<p style="margin-top:15px;line-height:1.8">
-I know I made mistakes.<br>
-I'm not asking you to forget everything.<br>
-I'm only asking for one last chance to prove that I can be better.<br><br>
-Whatever your decision is, I will respect it.<br>
-Thank you for every beautiful memory. ❤️
-</p>
-</div>
-</div>
-<script>
-const txt=`Every love story has difficult chapters.
+    <!-- Background -->
 
-Ours became one of them.
+    <div id="stars"></div>
 
-Maybe I wasn't perfect.
-Maybe I made mistakes.
+    <div id="hearts"></div>
 
-But my heart still remembers every smile,
-every memory,
-and every moment with you.
+    <div id="petals"></div>
 
-Today I'm not asking for perfection.
+    <!-- Main Card -->
 
-I'm only asking...
+    <div class="container">
 
-Please give me one last chance. ❤️`;
-let i=0;
-(function type(){
- if(i<txt.length){
-  typing.innerHTML+=txt[i++];
-  setTimeout(type,35);
- }
-})();
-for(let i=0;i<180;i++){
- let s=document.createElement("div");
- s.className="star";
- s.style.left=Math.random()*100+"vw";
- s.style.top=Math.random()*100+"vh";
- s.style.animationDelay=Math.random()*2+"s";
- bg.appendChild(s);
-}
-setInterval(()=>{
- let h=document.createElement("div");
- h.className="heart";
- h.innerHTML="❤";
- h.style.left=Math.random()*100+"vw";
- h.style.fontSize=(16+Math.random()*28)+"px";
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),10000);
-},250);
-setInterval(()=>{
- let p=document.createElement("div");
- p.className="petal";
- p.style.left=Math.random()*100+"vw";
- document.body.appendChild(p);
- setTimeout(()=>p.remove(),10000);
-},500);
+        <h3>❤️ Dear Hibi ❤️</h3>
 
-document.addEventListener("mousemove",e=>{
- let t=document.createElement("div");
- t.className="trail";
- t.innerHTML="💖";
- t.style.left=e.clientX+"px";
- t.style.top=e.clientY+"px";
- document.body.appendChild(t);
- setTimeout(()=>t.remove(),800);
-});
+        <h1 id="title">
+            Please Read This...
+        </h1>
 
-const c=document.getElementById("fx"),x=c.getContext("2d");
-function resize(){c.width=innerWidth;c.height=innerHeight}
-resize();onresize=resize;
-let parts=[];
-function burst(){
- for(let i=0;i<220;i++){
-  parts.push({
-   x:c.width/2,y:c.height/2,
-   vx:(Math.random()-0.5)*8,
-   vy:(Math.random()-0.5)*8,
-   a:1
-  });
- }
-}
-function anim(){
- x.clearRect(0,0,c.width,c.height);
- parts.forEach(p=>{
-  p.x+=p.vx;p.y+=p.vy;p.vy+=0.03;p.a-=0.008;
-  x.globalAlpha=Math.max(p.a,0);
-  x.fillStyle="hsl("+Math.random()*360+",100%,60%)";
-  x.beginPath();x.arc(p.x,p.y,2,0,Math.PI*2);x.fill();
- });
- parts=parts.filter(p=>p.a>0);
- requestAnimationFrame(anim);
-}
-anim();
+        <p id="typing"></p>
 
-function openHeart(){
- document.getElementById("final").style.display="block";
- burst();
-}
-</script>
+        <a href="pages/apology.html">
+
+            <button>
+
+                Continue ❤️
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
